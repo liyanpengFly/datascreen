@@ -37,11 +37,64 @@ header {
     max-width: 1920px;
     margin: 0 auto;
     padding: .125rem .125rem 0;
-    background-color: pink;
     .column {
         flex:3;
     }
     .column:nth-child(2) {
         flex:5;
+    }
+    .panel {
+        position: relative;
+        height: 3.875rem;
+        padding: 0 0.1875rem 0.5rem;
+        border: 1px solid rgba(25, 186, 139, 0.17);
+        margin-bottom: 0.1875rem;
+        background: url(../images/line\(1\).png)  rgba(255, 255, 255, 0.03);
+        &::before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            border-left: 2px solid #02a6b5;
+            border-top: 2px solid #02a6b5;
+            content:'';
+        }
+        &::after {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            border-right: 2px solid #02a6b5;
+            border-top: 2px solid #02a6b5;
+            content:'';
+        }
+        .panel-footer {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            &::before {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 10px;
+                height: 10px;
+                border-left: 2px solid #02a6b5;
+                border-bottom: 2px solid #02a6b5;
+                content:'';
+            }
+            &::after {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                width: 10px;
+                height: 10px;
+                border-right: 2px solid #02a6b5;
+                border-bottom: 2px solid #02a6b5;
+                content:'';
+            }
+        }
     }
 }
