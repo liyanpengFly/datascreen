@@ -27,3 +27,17 @@ header .showTime {
   font-size: 0.25rem;
   color: rgba(255, 255, 255, 0.7);
 }
+.mainbox {
+  display: flex;
+  min-width: 1024px;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0.125rem 0.125rem 0;
+  background-color: pink;
+}
+.mainbox .column {
+  flex: 3;
+}
+.mainbox .column:nth-child(2) {
+  flex: 5;
+}
