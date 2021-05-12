@@ -94,3 +94,15 @@ header .showTime {
   border-bottom: 2px solid #02a6b5;
   content: '';
 }
+.mainbox .panel h2 {
+  height: 0.6rem;
+  line-height: 0.6rem;
+  color: #fff;
+  text-align: center;
+  font-size: 0.25rem;
+  font-weight: 400;
+}
+.mainbox .panel .chart {
+  height: 3rem;
+  background-color: pink;
+}
