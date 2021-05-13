@@ -5,6 +5,16 @@
     box-sizing: border-box;
 }
 
+li {
+    list-style: none;
+}
+
+// 生命字体
+@font-face {
+    font-family: electronicFont;
+    src: url(../font/DS-DIGIT.TTF);
+}
+
 body {
     background: url(../images/bg.jpg) no-repeat top center;
     line-height: 1.15;
@@ -116,4 +126,121 @@ header {
 .no {
     padding: .1875rem;
     background: rgba(101, 132, 226, 0.1);
+    .no-hd {
+        position: relative;
+        border: 1px solid rgba(25, 186, 139, 0.17);
+        &::before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            content: "";
+            width: 30px;
+            height: 10px;
+            border-left: 1px solid #02a6b5;
+            border-top: 1px solid #02a6b5;
+        }
+        &::after {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            content: "";
+            width: 30px;
+            height: 10px;
+            border-right: 1px solid #02a6b5;
+            border-bottom: 1px solid #02a6b5;
+        }
+        ul {
+            display: flex;
+            li {
+                flex: 1;
+                line-height: 1rem;
+                font-size: 0.875rem;
+                color: #ffeb7b;
+                text-align: center;
+                font-family: 'electronicFont';
+            }
+            li:first-child {
+                position: relative;
+                &::after{
+                    position: absolute;
+                    right: 0;
+                    top: 25%;
+                    content: "";
+                    height: 50%;
+                    width: 1px;
+                    background: rgba(255,255,255,.2);
+                }
+            }
+        }
+    }
+    .no-bd {
+        ul {
+            display: flex;
+            li {
+                flex: 1;
+                text-align: center;
+                color: rgba(255,255, 255, .7);
+                font-size: 0.225rem;
+                height: .5rem;
+                line-height: .5rem;
+                padding-top: .125rem;
+            }
+        }
+    }
+}
+
+.map {
+    position: relative;
+    height: 10.125rem;
+    .map1 {
+        width: 6.475rem;
+        height: 6.475rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background: url(../images/map.png);
+        background-size: 100% 100%;
+        opacity: .3;
+    }
+    .map2 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 8.0375rem;
+        height: 8.0375rem;
+        background: url(../images/lbx.png) no-repeat center center;
+        animation: rotate1 15s linear infinite;
+        opacity: .6;
+        background-size: 100% 100%;
+    }
+    .map3 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 7.075rem;
+        height: 7.075rem;
+        background: url(../images/jt.png) no-repeat center center;
+        animation: rotate2 15s linear infinite;
+        opacity: .6;
+        background-size: 100% 100%;
+    }
+    @keyframes rotate1 {
+        from{ 
+            transform: translate(-50%,-50%) rotate(0deg);
+        }
+        to {
+            transform: translate(-50%,-50%) rotate(360deg);
+        }
+    }
+    @keyframes rotate2 {
+        from{ 
+            transform: translate(-50%,-50%) rotate(0deg);
+        }
+        to {
+            transform: translate(-50%,-50%) rotate(-360deg);
+        }
+    }
 }
