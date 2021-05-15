@@ -323,7 +323,38 @@
             {
                 type: 'category',
                 boundaryGap: false,
-                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                data: [
+                    "01",
+                    "02",
+                    "03",
+                    "04",
+                    "05",
+                    "06",
+                    "07",
+                    "08",
+                    "09",
+                    "10",
+                    "11",
+                    "12",
+                    "13",
+                    "14",
+                    "15",
+                    "16",
+                    "17",
+                    "18",
+                    "19",
+                    "20",
+                    "21",
+                    "22",
+                    "23",
+                    "24",
+                    "25",
+                    "26",
+                    "26",
+                    "28",
+                    "29",
+                    "30"
+                  ],
                 axisLabel: {
                     textStyle: {
                         color:'rgba(255,255,255,.6)',
@@ -365,19 +396,207 @@
             {
                 name: '邮件营销',
                 type: 'line',
-                stack: '总量',
-                areaStyle: {},
-                data: [120, 132, 101, 134, 90, 230, 210]
+                smooth: true,
+                lineStyle: {
+                    color:'#0184d5',
+                    width:'2'
+                },
+                // 填充颜色设置
+                areaStyle: {
+                    color: new echarts.graphic.LinearGradient(
+                        0,
+                        0,
+                        0,
+                        1,
+                        [
+                          {
+                            offset: 0,
+                            color: "rgba(1, 132, 213, 0.4)" // 渐变色的起始颜色
+                          },
+                          {
+                            offset: 0.8,
+                            color: "rgba(1, 132, 213, 0.1)" // 渐变线的结束颜色
+                          }
+                        ],
+                        false
+                      ),
+                      shadowColor: "rgba(0, 0, 0, 0.1)"
+                },
+                symbol:'circle',    //设置拐点，小圆圈
+                symbolSize: 5,      //拐点大小
+                itemStyle:{         //设置拐点颜色及边框
+                    color:'#0184d5',
+                    borderColor:'rgba(221,220,107,.1)',
+                    borderWidth: 12
+                },
+                showSymbol: false,  //拐点开始不显示，鼠标经过显示
+                data: [
+                    30,
+                    40,
+                    30,
+                    40,
+                    30,
+                    40,
+                    30,
+                    60,
+                    20,
+                    40,
+                    30,
+                    40,
+                    30,
+                    40,
+                    30,
+                    40,
+                    30,
+                    60,
+                    20,
+                    40,
+                    30,
+                    40,
+                    30,
+                    40,
+                    30,
+                    40,
+                    20,
+                    60,
+                    50,
+                    40
+                  ]
             },
             {
                 name: '联盟广告',
                 type: 'line',
-                stack: '总量',
-                areaStyle: {},
-                data: [220, 182, 191, 234, 290, 330, 310]
+                smooth: true,
+                lineStyle: {
+                    normal: {
+                      color: "#00d887",
+                      width: 2
+                    }
+                  },
+                areaStyle: {
+                    normal: {
+                      color: new echarts.graphic.LinearGradient(
+                        0,
+                        0,
+                        0,
+                        1,
+                        [
+                          {
+                            offset: 0,
+                            color: "rgba(0, 216, 135, 0.4)"
+                          },
+                          {
+                            offset: 0.8,
+                            color: "rgba(0, 216, 135, 0.1)"
+                          }
+                        ],
+                        false
+                      ),
+                      shadowColor: "rgba(0, 0, 0, 0.1)"
+                    }
+                },
+                // 设置拐点 小圆点
+                symbol: "circle",
+                // 拐点大小
+                symbolSize: 5,
+                // 设置拐点颜色以及边框
+                itemStyle: {
+                  color: "#00d887",
+                  borderColor: "rgba(221, 220, 107, .1)",
+                  borderWidth: 12
+                },
+                // 开始不显示拐点， 鼠标经过显示
+                showSymbol: false,
+                data: [
+                    130,
+                    10,
+                    20,
+                    40,
+                    30,
+                    40,
+                    80,
+                    60,
+                    20,
+                    40,
+                    90,
+                    40,
+                    20,
+                    140,
+                    30,
+                    40,
+                    130,
+                    20,
+                    20,
+                    40,
+                    80,
+                    70,
+                    30,
+                    40,
+                    30,
+                    120,
+                    20,
+                    99,
+                    50,
+                    20
+                  ]
             }
         ]
     };
     // 3.把配置给实例对象
     myChart.setOption(option)
-})()
+    // 4. 让图表跟随屏幕自动的去适应
+    window.addEventListener("resize", function() {
+        myChart.resize();
+    });
+})();
+
+// 饼形图1
+(function(){
+    // 1.实例化对象
+    var box = document.querySelector('.pie .chart')
+    var myChart = echarts.init(box)
+    // 2.指定配置
+    var option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b}: {c} ({d}%)'
+        },
+        legend: {
+            // 距离底部为0%
+            bottom: '5%',
+            // 小图标的宽度和高度
+            itemWidth: 10,
+            itemHeight: 10,
+            textStyle:{
+                color:'rgba(255,255,255,.5)',
+                fontSize: '12'
+            },
+            data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+        },
+        series: [
+            {
+                name: '访问来源',
+                type: 'pie',
+                radius: ['50%', '70%'],
+                avoidLabelOverlap: false,
+                label: {
+                    show: false,
+                    position: 'center'
+                },
+                labelLine: {
+                    show: false
+                },
+                data: [
+                    {value: 335, name: '直接访问'},
+                    {value: 310, name: '邮件营销'},
+                    {value: 234, name: '联盟广告'},
+                    {value: 135, name: '视频广告'},
+                    {value: 1548, name: '搜索引擎'}
+                ]
+            }
+        ]
+    };
+    
+    // 3.把配置给到实例对象
+    myChart.setOption(option)
+})();
