@@ -47,6 +47,7 @@ header .showTime {
 .mainbox .column:nth-child(2) {
   flex: 5;
   margin: 0 0.125rem 0.1875rem;
+  overflow: hidden;
 }
 .mainbox .panel {
   position: relative;
@@ -220,6 +221,13 @@ header .showTime {
   opacity: 0.6;
   background-size: 100% 100%;
 }
+.map .chart {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10.125rem;
+}
 @keyframes rotate1 {
   from {
     transform: translate(-50%, -50%) rotate(0deg);
@@ -234,5 +242,16 @@ header .showTime {
   }
   to {
     transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+/* 约束屏幕尺寸 */
+@media screen and (max-width: 1024px) {
+  html {
+    font-size: 42px !important;
+  }
+}
+@media screen and (min-width: 1920px) {
+  html {
+    font-size: 80px !important;
   }
 }
