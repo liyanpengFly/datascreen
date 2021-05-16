@@ -557,6 +557,7 @@
     var myChart = echarts.init(box)
     // 2.指定配置
     var option = {
+        color: ["#065aab", "#066eab", "#0682ab", "#0696ab", "#06a0ab"],
         tooltip: {
             trigger: 'item',
             formatter: '{a} <br/>{b}: {c} ({d}%)'
@@ -565,19 +566,20 @@
             // 距离底部为0%
             bottom: '5%',
             // 小图标的宽度和高度
-            itemWidth: 10,
-            itemHeight: 10,
+            itemWidth: 5,
+            itemHeight: 5,
             textStyle:{
                 color:'rgba(255,255,255,.5)',
                 fontSize: '12'
             },
-            data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+            // data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
         },
         series: [
             {
-                name: '访问来源',
+                name: '年龄分布',
                 type: 'pie',
-                radius: ['50%', '70%'],
+                radius: ['40%', '60%'],
+                center:['50%','35%'],
                 avoidLabelOverlap: false,
                 label: {
                     show: false,
@@ -587,16 +589,92 @@
                     show: false
                 },
                 data: [
-                    {value: 335, name: '直接访问'},
-                    {value: 310, name: '邮件营销'},
-                    {value: 234, name: '联盟广告'},
-                    {value: 135, name: '视频广告'},
-                    {value: 1548, name: '搜索引擎'}
-                ]
+                    { value: 1, name: "0岁以下" },
+                    { value: 4, name: "20-29岁" },
+                    { value: 2, name: "30-39岁" },
+                    { value: 2, name: "40-49岁" },
+                    { value: 1, name: "50岁以上" }
+                  ]
             }
         ]
     };
     
     // 3.把配置给到实例对象
     myChart.setOption(option)
+    // 让图表跟随屏幕自动适配
+    window.addEventListener('resize',function(){
+        myChart.resize()
+    })
+})();
+
+// 饼形图2
+(function(){
+    // (1)实例化
+    var box = document.querySelector('.pie2 .chart')
+    var myChart = echarts.init(box)
+    // (2)配置项
+    var option = {
+        color: [
+            "#006cff",
+            "#60cda0",
+            "#ed8884",
+            "#ff9f7f",
+            "#0096ff",
+            "#9fe6b8",
+            "#32c5e9",
+            "#1d9dff"
+          ],
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b} : {c} ({d}%)'
+        },
+        legend: {
+            bottom: '0',
+            itemWidth: 5,
+            itemHeight: 5,
+            textStyle: {
+                color:'rgba(255,255,255,.5)',
+                fontSize:'6'
+            }
+            // data: ['rose1', 'rose2', 'rose3', 'rose4', 'rose5', 'rose6', 'rose7', 'rose8']
+        },
+        series: [
+            {
+                name: '地区分布',
+                type: 'pie',
+                radius: ['10%', '70%'],
+                center: ['50%', '46%'],
+                roseType: 'radius',
+                // 图形文字标签
+                label: {
+                    fontSize: 10,
+                },
+                labelLine: {
+                    // 连接图形的线条
+                    length: 6,
+                    // 连接文字的线条
+                    length2: 8
+                },
+                itemStyle: {
+                    borderRadius: 5
+                },
+                data: [
+                    { value: 20, name: "云南" },
+                    { value: 26, name: "北京" },
+                    { value: 24, name: "山东" },
+                    { value: 25, name: "河北" },
+                    { value: 20, name: "江苏" },
+                    { value: 25, name: "浙江" },
+                    { value: 30, name: "四川" },
+                    { value: 42, name: "湖北" }
+                ]
+            }
+        ]
+    };
+    // (3)将配置项给实例
+    myChart.setOption(option)
+    // 让图表跟随屏幕自动适配
+    window.addEventListener('resize',function(){
+        myChart.resize()
+    })
 })();
